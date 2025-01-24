@@ -14,11 +14,11 @@ var isAnagram = function(s, t) {
 
     for(let i=0;i<s.length;i++){
         a1[s.charCodeAt(i)]++
-        a2[t.charCodeAt(i)]++
+        a1[t.charCodeAt(i)]--
     }
 
     for(let i=0;i<a1.length;i++){
-        if(a1[i]!==a2[i]){
+        if(a1[i]!==0){
             return false
         }
 
