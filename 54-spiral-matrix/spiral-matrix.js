@@ -3,43 +3,43 @@
  * @return {number[]}
  */
 var spiralOrder = function(matrix) {
-
-    let dir=0
-    let top=0
-    let bottom=matrix.length-1;
-    let left=0
-    let right=matrix[0].length-1
     let res=[]
+    let n=matrix.length
+    let m=matrix[0].length
+    let top=0
+    let left=0
+    let right=m-1
+    let bottom=n-1
+    let count=0
+    let total=n*m
 
-    while(top<=bottom&&left<=right){
-        if(dir===0){
-            for(let i=top;i<=right;i++){
-                res.push(matrix[top][i])
-            }
-            top++
-        }
-        else if(dir===1){
-            for(let i=top;i<=bottom;i++){
-                res.push(matrix[i][right])
-            }
-            right--
-        }
-        else if(dir===2){
-            for(let i=right;i>=left;i--){
-                res.push(matrix[bottom][i])
-            }
-            bottom--
-        }
-        else if(dir===3){
-            for(let i=bottom;i>=top;i--){
-                res.push(matrix[i][left])
-            }
-            left++
-        }
+    while(count<total){
 
-        dir=(dir+1)%4
+        for(let i=left;i<=right&&count<total;i++){
+            res.push(matrix[top][i])
+            count++
+        }
+        top++
 
+        for(let i=top;i<=bottom&&count<total;i++){
+            res.push(matrix[i][right])
+            count++
+        }
+        right--
+
+        for(let i=right;i>=left&&count<total;i--){
+            res.push(matrix[bottom][i])
+            count++
+        }
+        bottom--
+
+        for(let i=bottom;i>=top&&count<total;i--){
+            res.push(matrix[i][left])
+            count++
+        }
+        left++
     }
-    return res
-    
+return res
+
+
 };
