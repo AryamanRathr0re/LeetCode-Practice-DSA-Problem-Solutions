@@ -3,23 +3,18 @@
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-    let ans=0
-let temp=x
-
-
+    let rev=0
+    let rem=0
+    let temp=x
     while(x>0){
-       let rem=x%10
-        ans=(ans*10)+rem
+         rem=Math.floor(x%10)
+        rev=(rev*10)+rem
         x=Math.floor(x/10)
-
     }
- 
-    if(temp===ans){
+    if(temp===rev){
         return true
     }
-    else
-    {
+    else{
         return false
     }
-    
 };
