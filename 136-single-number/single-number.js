@@ -3,10 +3,18 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    nums.sort((a,b)=>a-b)
-    for(let i=0;i<nums.length;i=i+2){
-        if(nums[i]!==nums[i+1]){
-            return nums[i]
+    let hash={}
+
+    for(let i=0;i<nums.length;i++){
+        if(!hash[nums[i]]){
+            hash[nums[i]]=1
         }
+        else{
+            hash[nums[i]]++
+        }
+    }
+    for(let i=0;i<nums.length;i++){
+        if(hash[nums[i]]===1)
+        return nums[i]
     }
 };
