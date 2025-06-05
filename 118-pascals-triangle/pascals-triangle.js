@@ -3,7 +3,7 @@
  * @return {number[][]}
  */
 var generate = function(numRows) {
-
+    
     let res=[]
 
     for(let i=0;i<numRows;i++){
@@ -20,5 +20,4 @@ var generate = function(numRows) {
         res.push(row)
     }
     return res
-    
 };
