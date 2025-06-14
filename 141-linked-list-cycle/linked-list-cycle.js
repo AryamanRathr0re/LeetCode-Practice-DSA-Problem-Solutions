@@ -11,12 +11,16 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-    let visitednodes=new Set()
+    let seenNodes=new Set()
     let curr=head
-    while(curr!==null){
-        if(visitednodes.has(curr)) return true
-        visitednodes.add(curr)
+    while(curr!=null){
+
+        if(seenNodes.has(curr)){
+            return true
+        }
+        seenNodes.add(curr)
         curr=curr.next
+
     }
     return false
 };
