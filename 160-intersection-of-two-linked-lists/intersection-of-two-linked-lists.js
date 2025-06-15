@@ -17,9 +17,8 @@ var getIntersectionNode = function(headA, headB) {
         sett.add(headB)
         headB=headB.next
     }
-    while(headA){
+    while(headA!=null){
         if(sett.has(headA)) return headA
-
         headA=headA.next
     }
     return null
