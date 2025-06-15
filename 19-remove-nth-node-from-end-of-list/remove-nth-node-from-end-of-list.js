@@ -11,19 +11,23 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
+
+    // one pass algo
+
     let sentinal=new ListNode()
-    let len=0
     sentinal.next=head
-    while(head){
-        head=head.next
-        len++
-    }
-    let sub=len-n
     let prev=sentinal
-    for(let i=0;i<sub;i++){
-        prev=prev.next
+    let slow=sentinal
+    let fast=head
+    for(let i=0;i<n;i++){
+        fast=fast.next
     }
-    prev.next=prev.next.next
+    while(fast!==null){
+        slow=slow.next
+        fast=fast.next
+    }
+    slow.next=slow.next.next
 
     return sentinal.next
+    
 };
