@@ -11,22 +11,33 @@
  * @return {ListNode}
  */
 var rotateRight = function(head, k) {
-    //find the length of list
-    let len=1
-    let temp=head
-    if(!head||!head.next) return head
-    while(temp.next){
-        temp=temp.next
+    //calculate the length
+    let len=0
+    let curr=head
+    while(curr){
+        curr=curr.next
         len++
     }
-    k=k%len
-    if(k===0) return head
-    let newtail=head
-    for(let i=0;i<len-k-1;i++){
-        newtail=newtail.next
+    if(!head||!head.next){
+        return head
     }
-    let newhead=newtail.next
-    newtail.next=null
-    temp.next=head
-    return newhead
+    // checck for k is greater than len
+    k=k%len
+
+    //use fast and slow to reach at k point where we need to rotate
+    let s=head
+    let f=head
+    for(let i=0;i<k;i++){
+        f=f.next
+    }
+    while(f.next){
+        s=s.next
+        f=f.next
+    }
+    //make new head as f will point to curr head and s will become new head
+    f.next=head
+    let newHead=s.next
+     s.next=null
+
+     return newHead
 };
