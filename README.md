@@ -29,5 +29,4 @@ This repository contains my solutions to various **LeetCode** coding problems, o
 
 ---
 
-## 🔖 Folder Structure
 
