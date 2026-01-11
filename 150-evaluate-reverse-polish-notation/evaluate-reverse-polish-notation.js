@@ -3,19 +3,25 @@
  * @return {number}
  */
 var evalRPN = function(tokens) {
-    let stack=[]
+    let stack = [];
 
-    for(let i=0;i<tokens.length;i++){
-        if(tokens[i]==="+"|| tokens[i]==="-"|| tokens[i]==="*"|| tokens[i]==="/"){
-             let a=stack.pop()
-            let b=stack.pop()
-            let sum=eval(`${b} ${tokens[i]} ${a}`)
-            stack.push(Math.trunc(sum))
-        }
-        else{
-                       stack.push(tokens[i])
-
+    for (let c of tokens) {
+        if (c === "+") {
+            stack.push(stack.pop() + stack.pop());
+        } else if (c === "-") {
+            let second = stack.pop();
+            let first = stack.pop();
+            stack.push(first - second);
+        } else if (c === "*") {
+            stack.push(stack.pop() * stack.pop());
+        } else if (c === "/") {
+            let second = stack.pop();
+            let first = stack.pop();
+            stack.push(parseInt(first / second));
+        } else {
+            stack.push(parseInt(c));
         }
     }
-    return Number(stack.pop())
+
+    return stack[0];    
 };
