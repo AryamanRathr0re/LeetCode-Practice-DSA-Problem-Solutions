@@ -1,0 +1,8 @@
+const reverseSubmatrix = (grid, x, y, k) => {
+    for (let i = 0; i < k >> 1; i++)
+        for (let j = 0; j < k; j++)
+            [grid[x + i][y + j], grid[x + k - 1 - i][y + j]] = 
+                [grid[x + k - 1 - i][y + j], grid[x + i][y + j]];
+
+    return grid;
+};
